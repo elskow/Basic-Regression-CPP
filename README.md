@@ -1,0 +1,3 @@
+# Learning linear regression from scratch using c++
+
+This repository contains code and resources for learning Linear Regression in C++. Linear Regression is a popular machine learning algorithm that is used for predicting a continuous value based on a set of input features. In this repository, we will explore how to implement Linear Regression in C++ using the [Eigen library](http://eigen.tuxfamily.org/).
