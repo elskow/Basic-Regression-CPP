@@ -37,3 +37,20 @@ Eigen::MatrixXd ETL::CSVtoEigen(std::vector<std::vector<std::string>> dataset, i
 
     return mat.transpose();
 }
+
+auto ETL::Mean(Eigen::MatrixXd data) -> decltype(data.colwise().mean()){
+    return data.colwise().mean();
+}
+
+auto ETL::Std(Eigen::MatrixXd data) -> decltype(((data.array().square().colwise().sum())/(data.rows() - 1)).sqrt()){
+    return ((data.array().square().colwise().sum())/(data.rows() - 1)).sqrt();
+}
+
+Eigen::MatrixXd ETL::Normalize(Eigen::MatrixXd data){
+    auto mean = Mean(data);
+    Eigen::MatrixXd scaled_data = data.rowwise() - mean;
+    auto std = Std(data);
+    Eigen::MatrixXd normalized_data = scaled_data.array().rowwise() / std;
+
+    return normalized_data;
+}

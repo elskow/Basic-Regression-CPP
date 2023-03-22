@@ -15,8 +15,9 @@ int main(int argc, char *argv[]){
     int cols = dataset[0].size();
 
     Eigen::MatrixXd dataMat = etl.CSVtoEigen(dataset, rows, cols);
+    Eigen::MatrixXd normData = etl.Normalize(dataMat);
 
-    std::cout << dataMat << std::endl;
+    std::cout << normData << std::endl;
 
     return EXIT_SUCCESS;
 }
