@@ -3,7 +3,8 @@
 
 #include <iostream>
 #include <fstream>
-#include <Eigen/Dense>
+#include <eigen3/Eigen/Dense>
+#include <vector>
 
 class ETL
 {
@@ -17,6 +18,8 @@ public:
     {}
 
     std::vector<std::vector<std::string>> readCSV();
+
+    Eigen::MatrixXd CSVtoEigen(std::vector<std::vector<std::string>> dataset, int rows, int cols);
 };
 
 #endif
