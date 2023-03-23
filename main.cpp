@@ -16,8 +16,16 @@ int main(int argc, char *argv[]){
 
     Eigen::MatrixXd dataMat = etl.CSVtoEigen(dataset, rows, cols);
     Eigen::MatrixXd normData = etl.Normalize(dataMat);
+    
+    Eigen::MatrixXd X_train, y_train, X_test, y_test;
 
-    std::cout << normData << std::endl;
+    std::tie(X_train, y_train, X_test, y_test) = etl.TrainTestSplit(dataMat, 0.8);
+
+    std::cout << "X_train: " << X_train.size() << std::endl;
+    std::cout << "y_train: " << y_train.size() << std::endl;
+
+    std::cout << "X_test: " << X_test.size() << std::endl;
+    std::cout << "y_test: " << y_test.size() << std::endl;
 
     return EXIT_SUCCESS;
 }
